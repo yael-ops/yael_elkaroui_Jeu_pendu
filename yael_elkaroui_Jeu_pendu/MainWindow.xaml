@@ -7,14 +7,43 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="Mot à deviner : " VerticalAlignment="Top" Margin="10" />
-        <TextBlock Name="WordToGuess" VerticalAlignment="Top" Margin="120,10,10,0" />
-        <TextBlock Text="Lettres incorrectes : " VerticalAlignment="Top" Margin="10,40,10,0" />
-        <TextBlock Name="IncorrectLetters" VerticalAlignment="Top" Margin="140,40,10,0" />
-        <TextBlock Text="Tentatives restantes : " VerticalAlignment="Top" Margin="10,70,10,0" />
-        <TextBlock Name="AttemptsLeft" VerticalAlignment="Top" Margin="150,70,10,0" />
-        <TextBox Name="LetterInput" VerticalAlignment="Top" Margin="10,100,10,0" />
-        <Button Content="Deviner" VerticalAlignment="Top" Margin="150,100,10,0" Click="GuessButton_Click" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Name="GrdTitle" Background="Bisque">
+
+            <Label Content="Hangman"></Label>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Name="GridMiddle" Background="Aqua">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"  x:Name="Gridimage">
+                
+            </Grid>
+
+            <Grid Grid.Column="1"  x:Name="GridClavier">
+                <Grid.ColumnDefinitions>
+                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    
+                </Grid.RowDefinitions>
+                
+                
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" Name="GrdFooter" Background="AliceBlue">
+            <Label Content="Hangman"></Label>
+        </Grid>
+
 
     </Grid>
 
