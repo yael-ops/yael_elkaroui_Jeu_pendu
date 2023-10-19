@@ -13,15 +13,15 @@
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Name="GrdTitle" Background="Bisque">
+        <Grid Grid.Row="0" Name="GrdTitle" Background="DarkGray">
 
-            <Label Content="Jeu de Pendu" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45"></Label>
+            <Label Content="Hangman:L'homme corde" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45"></Label>
             
        
         </Grid>
 
 
-        <Grid Grid.Row="1" Name="GridMiddle" Background="Aqua">
+        <Grid Grid.Row="1" Name="GridMiddle" Background="SaddleBrown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -53,36 +53,37 @@
 
 
                 </Grid.RowDefinitions>
-                <Button Grid.Row="1" Grid.Column="1" Name="A" Content="A" Click="Button_Click"/>
-                <Button Grid.Row="1" Grid.Column="2" Name="B" Content="B" Click="Button_Click"/>
-                <Button Grid.Row="1" Grid.Column="3" Name="C" Content="C" Click="Button_Click"/>
-                <Button Grid.Row="1" Grid.Column="4" Name="D" Content="D" Click="Button_Click"/>
-                <Button Grid.Row="1" Grid.Column="5" Name="E" Content="E" Click="Button_Click"/>
-                <Button Grid.Row="2" Grid.Column="1" Name="F" Content="F" Click="Button_Click"/>
-                <Button Grid.Row="2" Grid.Column="2" Name="G" Content="G" Click="Button_Click"/>
-                <Button Grid.Row="2" Grid.Column="3" Name="H" Content="H" Click="Button_Click"/>
-                <Button Grid.Row="2" Grid.Column="4" Name="I" Content="I" Click="Button_Click"/>
-                <Button Grid.Row="2" Grid.Column="5" Name="J" Content="J" Click="Button_Click"/>
-                <Button Grid.Row="3" Grid.Column="1" Name="K" Content="K" Click="Button_Click"/>
-                <Button Grid.Row="3" Grid.Column="2" Name="L" Content="L" Click="Button_Click"/>
-                <Button Grid.Row="3" Grid.Column="3" Name="M" Content="M" Click="Button_Click"/>
-                <Button Grid.Row="3" Grid.Column="4" Name="N" Content="N" Click="Button_Click"/>
-                <Button Grid.Row="3" Grid.Column="5" Name="O" Content="O" Click="Button_Click"/>
-                <Button Grid.Row="4" Grid.Column="1" Name="P" Content="P" Click="Button_Click"/>
-                <Button Grid.Row="4" Grid.Column="2" Name="Q" Content="Q" Click="Button_Click"/>
-                <Button Grid.Row="4" Grid.Column="3" Name="R" Content="R" Click="Button_Click"/>
-                <Button Grid.Row="4" Grid.Column="4" Name="S" Content="S" Click="Button_Click"/>
-                <Button Grid.Row="4" Grid.Column="5" Name="T" Content="T" Click="Button_Click"/>
-                <Button Grid.Row="5" Grid.Column="1" Name="U" Content="U" Click="Button_Click"/>
-                <Button Grid.Row="5" Grid.Column="2" Name="V" Content="V" Click="Button_Click"/>
-                <Button Grid.Row="5" Grid.Column="3" Name="W" Content="W" Click="Button_Click"/>
-                <Button Grid.Row="5" Grid.Column="4" Name="X" Content="X" Click="Button_Click"/>
-                <Button Grid.Row="5" Grid.Column="5" Name="Y" Content="Y" Click="Button_Click"/>
-                <Button Grid.Row="6" Grid.Column="1" Name="Z" Content="Z" Click="Button_Click"/>
+                <Button Grid.Row="1" Grid.Column="1" Name="A" Content="A" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="1" Grid.Column="2" Name="B" Content="B" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="1" Grid.Column="3" Name="C" Content="C" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="1" Grid.Column="4" Name="D" Content="D" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="1" Grid.Column="5" Name="E" Content="E" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="2" Grid.Column="1" Name="F" Content="F" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="2" Grid.Column="2" Name="G" Content="G" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="2" Grid.Column="3" Name="H" Content="H" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="2" Grid.Column="4" Name="I" Content="I" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="2" Grid.Column="5" Name="J" Content="J" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="3" Grid.Column="1" Name="K" Content="K" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="3" Grid.Column="2" Name="L" Content="L" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="3" Grid.Column="3" Name="M" Content="M" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="3" Grid.Column="4" Name="N" Content="N" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="3" Grid.Column="5" Name="O" Content="O" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="4" Grid.Column="1" Name="P" Content="P" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="4" Grid.Column="2" Name="Q" Content="Q" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="4" Grid.Column="3" Name="R" Content="R" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="4" Grid.Column="4" Name="S" Content="S" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="4" Grid.Column="5" Name="T" Content="T" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="5" Grid.Column="1" Name="U" Content="U" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="5" Grid.Column="2" Name="V" Content="V" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="5" Grid.Column="3" Name="W" Content="W" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="5" Grid.Column="4" Name="X" Content="X" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="5" Grid.Column="5" Name="Y" Content="Y" Click="Button_Click" Background="DarkOliveGreen"/>
+                <Button Grid.Row="6" Grid.Column="1" Name="Z" Content="Z" Click="Button_Click" Background="DarkOliveGreen"/>
             </Grid>
         </Grid>
+       
 
-        <Grid Grid.Row="2" Name="GrdFooter" Background="AliceBlue">
+        <Grid Grid.Row="2" Name="GrdFooter" Background="DarkGray" > 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 
@@ -90,7 +91,7 @@
              
             </Grid.ColumnDefinitions>
 
-            <TextBlock  Name="Mot_a_trouver" Text="******" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"></TextBlock >
+            <TextBlock  Name="Mot_a_trouver" Text="-------" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"></TextBlock >
             <TextBlock  Name="Nombres_de_vies" Grid.Column="1" Text="Nombres de vies" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock >
         </Grid>
         

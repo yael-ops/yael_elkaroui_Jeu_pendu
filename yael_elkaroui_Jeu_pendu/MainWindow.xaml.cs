@@ -20,7 +20,7 @@ namespace yael_elkaroui_Jeu_pendu
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string[] mots = { "pomme", "banane", "cerise", "raisin", "orange" };
+        private string[] mots = { "table", "chaise", "ordinateur", "fenetre", "voiture", "telephone", "lampe", "papier", "porte", "plante", "cuisine", "souris", "coussin", "escalier", "bureau", "lit", "couverture", "telecommande", "carte", "horloge", "canape", "mur", "tapis", "refrigerateur", "miroir", "fauteuil", "cassette", "television", "casque", "clavier", "chargeur", "microphone", "placard", "ventilateur", "vent", "cordon", "poubelle", "livre", "stylo", "ecran", "cheminee", "radio", "journal", "peinture", "balcon", "appareil", "interrupteur", "plafond", "bouteille", "journal" };
         private string motSecret;
         private int viesRestantes = 5;
         private List<Button> boutonsLettres = new List<Button>();
@@ -31,17 +31,27 @@ namespace yael_elkaroui_Jeu_pendu
             InitGame();
         }
 
-        private void InitGame()
+        // Fonction qui initialise la partie
+        private void InitGame() 
         {
             Random random = new Random();
             motSecret = mots[random.Next(mots.Length)].ToLower();
-            viesRestantes = 5;
+            viesRestantes = 6;
             Nombres_de_vies.Text = viesRestantes.ToString();
-            Mot_a_trouver.Text = new string('*', motSecret.Length);
+            Mot_a_trouver.Text = new string('-', motSecret.Length);
             ResetButtons();
+            UpdateHangmanImage();  // Ajoutez ceci pour afficher l'image au début du jeu
 
-            // Désactiver le bouton "Nouvelle partie" s'il est activé
+            // Désactivez le bouton "Nouvelle partie" s'il est activé
             GridClavier.IsEnabled = true;
+        }
+
+        private void UpdateHangmanImage()
+        {
+            int imageNumber = 7 - viesRestantes;
+            string imagePath = $"/Ressources/Images/{imageNumber}.png";
+            Uri imageUri = new Uri(imagePath, UriKind.Relative);
+            img_pendu.Source = new BitmapImage(imageUri);
         }
 
         private void ResetButtons()
@@ -108,7 +118,7 @@ namespace yael_elkaroui_Jeu_pendu
                 bouton.IsEnabled = false;
                 bouton.Background = new SolidColorBrush(Colors.LightGreen);
 
-                if (!Mot_a_trouver.Text.Contains('*'))
+                if (!Mot_a_trouver.Text.Contains('-'))
                 {
                     MessageBox.Show("Félicitations ! Vous avez trouvé le mot : " + motSecret);
                     InitGame();
@@ -125,6 +135,10 @@ namespace yael_elkaroui_Jeu_pendu
                 {
                     MessageBox.Show("Vous avez épuisé toutes vos vies. Le mot était : " + motSecret);
                     InitGame();
+                }
+                else
+                {
+                    UpdateHangmanImage(); // Met à jour l'image du pendu
                 }
             }
         }
