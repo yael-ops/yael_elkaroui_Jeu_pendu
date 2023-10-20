@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace yael_elkaroui_Jeu_pendu
 {
@@ -23,16 +24,57 @@ namespace yael_elkaroui_Jeu_pendu
         private string[] mots = { "table", "chaise", "ordinateur", "fenetre", "voiture", "telephone", "lampe", "papier", "porte", "plante", "cuisine", "souris", "coussin", "escalier", "bureau", "lit", "couverture", "telecommande", "carte", "horloge", "canape", "mur", "tapis", "refrigerateur", "miroir", "fauteuil", "cassette", "television", "casque", "clavier", "chargeur", "microphone", "placard", "ventilateur", "vent", "cordon", "poubelle", "livre", "stylo", "ecran", "cheminee", "radio", "journal", "peinture", "balcon", "appareil", "interrupteur", "plafond", "bouteille", "journal" };
         private string motSecret;
         private int viesRestantes = 5;
-        private List<Button> boutonsLettres = new List<Button>();
+        private DispatcherTimer timer;
+        private TimeSpan timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(0);
 
         public MainWindow()
         {
             InitializeComponent();
+            InitializeTimer();
             InitGame();
         }
 
-        // Fonction qui initialise la partie
-        private void InitGame() 
+        private void InitializeTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+        }
+
+        private void StartTimer()
+        {
+            timer.Start();
+        }
+
+        private void ResetTimer()
+        {
+            timer.Stop();  // Arrête le timer
+            timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);  // Réinitialise le temps restant
+            timer1.Content = timeLeft.ToString(@"mm\:ss");  // Met à jour l'affichage du temps
+            StartTimer();  // Redémarre le timer
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft.TotalSeconds > 0)
+            {
+                timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+                timer1.Content = timeLeft.ToString(@"mm\:ss"); // Met à jour le Label avec le temps restant
+            }
+            else
+            {
+                timer.Stop();             
+                MessageBox.Show("Vous êtes trop lent.");
+                InitGame();
+                ResetTimer();
+
+                // Réinitialise le jeu
+            }
+        }
+
+        private void InitGame()
         {
             Random random = new Random();
             motSecret = mots[random.Next(mots.Length)].ToLower();
@@ -40,10 +82,10 @@ namespace yael_elkaroui_Jeu_pendu
             Nombres_de_vies.Text = viesRestantes.ToString();
             Mot_a_trouver.Text = new string('-', motSecret.Length);
             ResetButtons();
-            UpdateHangmanImage();  // Ajoutez ceci pour afficher l'image au début du jeu
+            UpdateHangmanImage();
 
-            // Désactivez le bouton "Nouvelle partie" s'il est activé
             GridClavier.IsEnabled = true;
+            StartTimer(); // Commence le compte à rebours au début du jeu
         }
 
         private void UpdateHangmanImage()
@@ -51,40 +93,13 @@ namespace yael_elkaroui_Jeu_pendu
             int imageNumber = 7 - viesRestantes;
             string imagePath = $"/Ressources/Images/{imageNumber}.png";
             Uri imageUri = new Uri(imagePath, UriKind.Relative);
-            img_pendu.Source = new BitmapImage(imageUri);
+            img_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(imageUri);
         }
 
         private void ResetButtons()
         {
-            boutonsLettres.Clear();
-            boutonsLettres.Add(A);
-            boutonsLettres.Add(B);
-            boutonsLettres.Add(C);
-            boutonsLettres.Add(D);
-            boutonsLettres.Add(E);
-            boutonsLettres.Add(F);
-            boutonsLettres.Add(G);
-            boutonsLettres.Add(H);
-            boutonsLettres.Add(I);
-            boutonsLettres.Add(J);
-            boutonsLettres.Add(K);
-            boutonsLettres.Add(L);
-            boutonsLettres.Add(M);
-            boutonsLettres.Add(N);
-            boutonsLettres.Add(O);
-            boutonsLettres.Add(P);
-            boutonsLettres.Add(Q);
-            boutonsLettres.Add(R);
-            boutonsLettres.Add(S);
-            boutonsLettres.Add(T);
-            boutonsLettres.Add(U);
-            boutonsLettres.Add(V);
-            boutonsLettres.Add(W);
-            boutonsLettres.Add(X);
-            boutonsLettres.Add(Y);
-            boutonsLettres.Add(Z);
 
-            foreach (Button bouton in boutonsLettres)
+            foreach (Button bouton in GridClavier.Children.OfType<Button>())
             {
                 bouton.IsEnabled = true;
                 bouton.Background = new SolidColorBrush(Colors.LightSkyBlue);
@@ -122,6 +137,7 @@ namespace yael_elkaroui_Jeu_pendu
                 {
                     MessageBox.Show("Félicitations ! Vous avez trouvé le mot : " + motSecret);
                     InitGame();
+                    ResetTimer();
                 }
             }
             else
@@ -135,10 +151,11 @@ namespace yael_elkaroui_Jeu_pendu
                 {
                     MessageBox.Show("Vous avez épuisé toutes vos vies. Le mot était : " + motSecret);
                     InitGame();
+                    ResetTimer();
                 }
                 else
                 {
-                    UpdateHangmanImage(); // Met à jour l'image du pendu
+                    UpdateHangmanImage();
                 }
             }
         }
