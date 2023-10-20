@@ -14,10 +14,22 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Name="GrdTitle" Background="DarkGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"></ColumnDefinition>
 
-            <Label Content="Hangman:L'homme corde" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45"></Label>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+
+            </Grid.ColumnDefinitions>
+            <Button Name="New_Game" Grid.Column="2"/>
+
+            <Label Content="Timer" Grid.Column="1 " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" ></Label>
+            <Label Content="Hangman" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45"></Label>
             
-       
+            
+
+
         </Grid>
 
 
