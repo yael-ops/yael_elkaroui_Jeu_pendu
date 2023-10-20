@@ -47,11 +47,16 @@ namespace yael_elkaroui_Jeu_pendu
         {
             timer.Start();
         }
+        
+        private void StopTimer()
+        { 
+            timer.Stop(); 
+        }
 
         private void ResetTimer()
         {
             timer.Stop();  // Arrête le timer
-            timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);  // Réinitialise le temps restant
+            timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(0);  // Réinitialise le temps restant
             timer1.Content = timeLeft.ToString(@"mm\:ss");  // Met à jour l'affichage du temps
             StartTimer();  // Redémarre le timer
         }
@@ -95,6 +100,11 @@ namespace yael_elkaroui_Jeu_pendu
             Uri imageUri = new Uri(imagePath, UriKind.Relative);
             img_pendu.Source = new System.Windows.Media.Imaging.BitmapImage(imageUri);
         }
+        private void Button_click_NewGame(object sender, RoutedEventArgs e)
+        {
+            InitGame();
+            ResetTimer() ;
+        }
 
         private void ResetButtons()
         {
@@ -102,7 +112,7 @@ namespace yael_elkaroui_Jeu_pendu
             foreach (Button bouton in GridClavier.Children.OfType<Button>())
             {
                 bouton.IsEnabled = true;
-                bouton.Background = new SolidColorBrush(Colors.LightSkyBlue);
+                bouton.Background = new SolidColorBrush(Colors.DarkKhaki);
             }
         }
 
@@ -110,6 +120,7 @@ namespace yael_elkaroui_Jeu_pendu
         {
             if (viesRestantes <= 0)
             {
+                StopTimer();
                 MessageBox.Show("Vous avez épuisé toutes vos vies. Le mot était : " + motSecret);
                 InitGame();
                 return;
@@ -135,6 +146,7 @@ namespace yael_elkaroui_Jeu_pendu
 
                 if (!Mot_a_trouver.Text.Contains('-'))
                 {
+                    StopTimer();
                     MessageBox.Show("Félicitations ! Vous avez trouvé le mot : " + motSecret);
                     InitGame();
                     ResetTimer();
@@ -149,6 +161,7 @@ namespace yael_elkaroui_Jeu_pendu
 
                 if (viesRestantes == 0)
                 {
+                    StopTimer();
                     MessageBox.Show("Vous avez épuisé toutes vos vies. Le mot était : " + motSecret);
                     InitGame();
                     ResetTimer();
