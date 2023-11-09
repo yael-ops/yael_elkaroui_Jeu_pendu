@@ -104,7 +104,15 @@ namespace yael_elkaroui_Jeu_pendu
         {
             InitGame();
             ResetTimer() ;
+            ResetIndiceButton();
+
         }
+
+        private void ResetIndiceButton()
+        {
+            IndiceButton.IsEnabled = true;
+        }
+
 
         private void ResetButtons()
         {
@@ -115,6 +123,52 @@ namespace yael_elkaroui_Jeu_pendu
                 bouton.Background = new SolidColorBrush(Colors.DarkKhaki);
             }
         }
+
+        private void IndiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Vérifiez si l'indice n'a pas déjà été donné pour ce mot
+            if (Mot_a_trouver.Text.Contains('-'))
+            {
+                // Trouvez un indice pour le mot secret
+                char lettreIndice = TrouverLettreIndice();
+
+                // Mettez à jour le mot à trouver avec la lettre de l'indice
+                var textArray = Mot_a_trouver.Text.ToCharArray();
+                for (int i = 0; i < motSecret.Length; i++)
+                {
+                    if (motSecret[i] == lettreIndice)
+                    {
+                        textArray[i] = lettreIndice;
+                    }
+                }
+                Mot_a_trouver.Text = new string(textArray);
+
+                // Désactivez le bouton d'indice après utilisation
+                IndiceButton.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Vous avez déjà utilisé l'indice pour ce mot.");
+            }
+        }
+
+        private char TrouverLettreIndice()
+        {
+            // Ajoutez votre logique pour trouver une lettre d'indice ici.
+            // Vous pouvez choisir une lettre aléatoire qui est encore inconnue dans le mot secret,
+            // ou vous pouvez utiliser une autre méthode pour déterminer l'indice.
+
+            // Exemple de logique simple : choisir une lettre aléatoire non révélée dans le mot secret
+            Random random = new Random();
+            char lettreIndice;
+            do
+            {
+                lettreIndice = (char)('a' + random.Next(26));
+            } while (!motSecret.Contains(lettreIndice));
+
+            return lettreIndice;
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

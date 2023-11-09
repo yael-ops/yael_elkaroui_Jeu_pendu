@@ -53,10 +53,12 @@
 
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
 
 
             </Grid.ColumnDefinitions>
             <Button Name="New_Game" Grid.Column="2" Margin="10" Content="New Game" Background="DarkOliveGreen" FontFamily="Segoe UI Semibold"  Click="Button_click_NewGame" Style="{DynamicResource MahApps.Styles.Button.Circle}" />
+            <Button Name="IndiceButton" Grid.Column="3" Margin="10" Content="Indice"  Background="DarkOliveGreen" FontFamily="Segoe UI Semibold" Click="IndiceButton_Click"  Style="{DynamicResource MahApps.Styles.Button.Circle}"/>
 
             <Label Name="timer1" Content="1:00" Grid.Column="1 " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" ></Label>
             <Label Content="Hangman" HorizontalAlignment="Center" FontSize="45" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Button.CleanWindow.Close.Background.Pressed}" IsEnabled="False"/>
