@@ -16,7 +16,7 @@
     <Grid>
         <Grid.Resources>
             <Style x:Key="LetterButtonStyle" TargetType="Button">
-                <Setter Property="Background" Value="DarkOliveGreen"/>
+                <Setter Property="Background" Value="SaddleBrown"/>
                 <Setter Property="Foreground" Value="#E6E6E6"/>
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Width" Value="38"/>
@@ -69,7 +69,13 @@
         </Grid>
 
 
-        <Grid Grid.Row="1" Name="GridMiddle" Background="SaddleBrown">
+        <Grid Grid.Row="1" Name="GridMiddle" >
+            <Grid.Background>
+                <ImageBrush ImageSource="Ressources/Images/depositphotos_6403667-stock-photo-school-days - Copier.jpg" />
+           
+            </Grid.Background>
+
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -89,8 +95,8 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>

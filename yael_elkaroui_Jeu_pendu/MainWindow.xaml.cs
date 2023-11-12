@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls.WebParts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using yael_elkaroui_Jeu_pendu.Properties;
 
 namespace yael_elkaroui_Jeu_pendu
 {
@@ -26,12 +28,15 @@ namespace yael_elkaroui_Jeu_pendu
         private int viesRestantes = 5;
         private DispatcherTimer timer;
         private TimeSpan timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(0);
-
+        private MediaPlayer mediaPlayer;
         public MainWindow()
         {
             InitializeComponent();
             InitializeTimer();
             InitGame();
+            InitializeMediaPlayer();
+            PlayMusic();
+
         }
 
         private void InitializeTimer()
@@ -61,6 +66,8 @@ namespace yael_elkaroui_Jeu_pendu
             StartTimer();  // Redémarre le timer
         }
 
+       
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (timeLeft.TotalSeconds > 0)
@@ -77,6 +84,20 @@ namespace yael_elkaroui_Jeu_pendu
 
                 // Réinitialise le jeu
             }
+        }
+
+        private void InitializeMediaPlayer()
+        {
+            mediaPlayer = new MediaPlayer();
+
+            // Utilisation d'un chemin relatif
+            mediaPlayer.Open(new Uri("Ressources/Musique/C418 - aria math(the drop part)[slowed & reverb].mp3", UriKind.Relative));
+        }
+
+        private void PlayMusic()
+        {
+            // Lancer la lecture de la musique
+            mediaPlayer.Play();
         }
 
         private void InitGame()
@@ -120,7 +141,7 @@ namespace yael_elkaroui_Jeu_pendu
             foreach (Button bouton in GridClavier.Children.OfType<Button>())
             {
                 bouton.IsEnabled = true;
-                bouton.Background = new SolidColorBrush(Colors.DarkKhaki);
+                bouton.Background = new SolidColorBrush(Colors.SaddleBrown);
             }
         }
 
@@ -204,6 +225,7 @@ namespace yael_elkaroui_Jeu_pendu
                     MessageBox.Show("Félicitations ! Vous avez trouvé le mot : " + motSecret);
                     InitGame();
                     ResetTimer();
+                    ResetIndiceButton();
                 }
             }
             else
@@ -219,6 +241,7 @@ namespace yael_elkaroui_Jeu_pendu
                     MessageBox.Show("Vous avez épuisé toutes vos vies. Le mot était : " + motSecret);
                     InitGame();
                     ResetTimer();
+                    ResetIndiceButton();
                 }
                 else
                 {

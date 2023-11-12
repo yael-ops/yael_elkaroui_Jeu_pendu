@@ -207,7 +207,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Ressources\Images\depositphotos_6403667-stock-photo-school-days.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\Images\1.png" />
     <Resource Include="Ressources\Images\2.png" />
@@ -216,6 +218,14 @@
     <Resource Include="Ressources\Images\5.png" />
     <Resource Include="Ressources\Images\6.png" />
     <Resource Include="Ressources\Images\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Images\depositphotos_6403667-stock-photo-school-days - Copier.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ressources\Musique\C418 - aria math %28the drop part%29 [slowed &amp; reverb].mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
